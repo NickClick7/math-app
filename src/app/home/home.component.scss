@@ -1,0 +1,162 @@
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 40px 0;
+  color: #455EB5;
+  text-align: center;
+}
+.start-button {
+  background-color: #455EB5;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 32px;
+  font-weight: bold;
+  height: 4rem;
+  margin-bottom: 30px;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  &:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+  }
+}
+
+@media (min-width: 768px) {
+  .start-button {
+    padding: 0 2.6rem;
+  }
+}
+
+.operation {
+  padding: 40px;
+}
+
+.user-input {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+
+  .numbers, .back, .enter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 32px;
+    cursor: pointer;
+    &:disabled {
+      cursor: not-allowed
+    }
+  }
+  
+  .numbers {
+    background-color: #455EB5;
+    border-color: #455EB5;
+  }
+  .back {
+    background-color: rgb(216, 67, 67);
+    border-color: rgb(216, 67, 67);
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .enter {
+    background-color: rgb(98, 182, 98);
+    border-color: rgb(98, 182, 98);
+    grid-column-start: 3;
+    grid-column-end: 6;
+  }
+}
+
+.result {
+  padding: 40px;
+  font-weight: 900;
+  font-size: 48px;
+  .correct {
+    color: rgb(98, 182, 98);
+  }
+  .incorrect {
+    color: rgb(216, 67, 67);
+  }
+  .correction {
+    border: 2px solid #455EB5;
+    padding: 0 10px;
+    border-radius: 5px;
+  }
+  .shimmer {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.1);
+		background: -webkit-gradient(linear, left top, right top, from(rgb(98, 182, 98)), to(rgb(98, 182, 98)), color-stop(0.5, #fff));
+		background: -moz-gradient(linear, left top, right top, from(rgb(98, 182, 98)), to(rgb(98, 182, 98)), color-stop(0.5, #fff));
+		background: gradient(linear, left top, right top, from(rgb(98, 182, 98)), to(rgb(98, 182, 98)), color-stop(0.5, #fff));
+		-webkit-background-size: 125px 100%;
+		-moz-background-size: 125px 100%;
+		background-size: 125px 100%;
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		background-clip: text;
+		-webkit-animation-name: shimmer;
+		-moz-animation-name: shimmer;
+		animation-name: shimmer;
+		-webkit-animation-duration: 2s;
+		-moz-animation-duration: 2s;
+		animation-duration: 2s;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-color: rgb(98, 182, 98);
+  }
+}
+.statistics {
+  text-align: left;
+
+}
+
+@-moz-keyframes shimmer {
+  0% {
+      background-position: top left;
+  }
+  100% {
+      background-position: top right;
+  }
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+      background-position: top left;
+  }
+  100% {
+      background-position: top right;
+  }
+}
+
+@-o-keyframes shimmer {
+  0% {
+      background-position: top left;
+  }
+  100% {
+      background-position: top right;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+      background-position: top left;
+  }
+  100% {
+      background-position: top right;
+  }
+}
