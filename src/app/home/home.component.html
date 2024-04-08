@@ -1,46 +1,10 @@
 <div class="container">
-  <p class="title">Practice Multiplications</p>
-  <button class="start-button" (click)="startMultiplications()" *ngIf="displayStartButton">Start</button>
-  <div class="primary" *ngIf="!displayStartButton">{{nrOfExample}}/10</div>
-  <div class="result" *ngIf="checked">
-    <p class="correct shimmer" *ngIf="success"> Good job!!!!</p>
-    <p class="incorrect" *ngIf="!success && !displayCorrection">Wrong!</p>
-    <p class="correction primary" *ngIf="checked && displayCorrection">{{number1}} x {{number2}} = {{result}}</p>
-  </div>
-  
-  <div class="operation primary" *ngIf="(number1 || number2) && !checked && !displayStartButton">
-    <p>{{number1}} x {{number2}} = 
-      <span *ngIf="userResult">{{userResult}}</span>
-      <span *ngIf="!userResult">?</span>
-    </p>
-  </div>
-  
-  <div class="user-input" >
-    <button 
-      class="numbers" 
-      *ngFor="let number of inputNumbers" 
-      (click)="createResult(number)" [disabled]="displayStartButton || displayCorrection"
-    >
-      {{number}}
-    </button>
-    <button 
-      class="back" 
-      (click)="modifyResult()" 
-      [disabled]="displayStartButton || displayCorrection"
-    >
-      Back 
-    </button>
-    <button 
-      class="enter" 
-      (click)="checkResult()" 
-      [disabled]="displayStartButton || displayCorrection"
-    >
-      Enter
-    </button>
-  </div>
-  <div class="statistics primary" *ngIf="displayStatistics">
-    <P>Correct: {{nrOfCorrect}}/10</P>
-    <p>Incorrect: {{nrOfIncorrect}}/10</p>
+  <div class="title">What would you like to practice?</div>
+  <div class="nav-buttons">
+    <app-button label="Addition" routerLink="/additions"></app-button>
+    <app-button label="Subtraction" routerLink="/subtractions"></app-button>
+    <app-button label="Multiplication" routerLink="/multiplications"></app-button>
+    <app-button label="Division" routerLink="/divisions"></app-button>
   </div>
 </div>
 
