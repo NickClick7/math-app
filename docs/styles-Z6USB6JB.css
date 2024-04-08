@@ -1,0 +1,1 @@
+.container{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:10px;height:100vh}p{margin-top:10px;margin-bottom:10px}.title{font-size:48px;font-weight:700;margin:40px 0;color:#455eb5;text-align:center}.primary{color:#455eb5;font-weight:900;font-size:48px}button:disabled{opacity:.8}
