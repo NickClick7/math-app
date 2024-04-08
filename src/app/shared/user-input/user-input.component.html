@@ -1,0 +1,24 @@
+<div class="user-input" >
+  <button 
+    class="numbers" 
+    *ngFor="let number of inputNumbers" 
+    (click)="createResult(number)" 
+    [disabled]="disabled"
+  >
+    {{number}}
+  </button>
+  <button 
+    class="back" 
+    (click)="modifyResult()" 
+    [disabled]="disabled"
+  >
+    Back 
+  </button>
+  <button 
+    class="enter" 
+    (click)="checkResult()" 
+    [disabled]="disabled"
+  >
+    Enter
+  </button>
+</div>

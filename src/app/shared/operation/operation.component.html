@@ -1,0 +1,27 @@
+<div class="container">
+  <app-button *ngIf="displayStartButton" label="Start" (onClick)="startPractice()"></app-button>
+  <div class="primary" *ngIf="!displayStartButton">{{nrOfExample}}/10</div>
+  <div class="result" *ngIf="checked">
+    <p class="correct shimmer" *ngIf="success"> Good job!!!!</p>
+    <p class="incorrect" *ngIf="!success && !displayCorrection">Wrong!</p>
+    <p class="correction primary" *ngIf="checked && displayCorrection">{{number1}} {{operator}} {{number2}} = {{result}}</p>
+  </div>
+  
+  <div class="operation primary" *ngIf="(number1 || number2) && !checked && !displayStartButton">
+    <p>{{number1}} {{operator}} {{number2}} = 
+      <span *ngIf="userResult">{{userResult}}</span>
+      <span *ngIf="!userResult">?</span>
+    </p>
+  </div>
+  <app-user-input 
+    [disabled]="displayStartButton || displayCorrection" 
+    (onCreateResult)="createResult($event)"
+    (onModifyResult)="modifyResult()"
+    (onCheckResult)="checkResult()"
+  ></app-user-input>
+  <div class="statistics primary" *ngIf="displayStatistics">
+    <P>Correct: {{nrOfCorrect}}/10</P>
+    <p>Incorrect: {{nrOfIncorrect}}/10</p>
+  </div>
+  <app-button label="Back to main" (onClick)="redirect()" class="back"></app-button>
+</div>
