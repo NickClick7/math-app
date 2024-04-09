@@ -8,11 +8,13 @@ import { ADDITION, DIVISION, MULTIPLICATION, SUBTRACTION } from '../../constants
 import { AdditionService } from '../../addition/addition.service';
 import { SubtractionService } from '../../subtraction/subtraction.service';
 import { DivisionService } from '../../divison/divison.service';
+import { ResultComponent } from '../result/result.component';
+import { TimerComponent } from '../timer/timer.component';
 
 @Component({
   selector: 'app-operation',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, UserInputComponent],
+  imports: [CommonModule, ButtonComponent, UserInputComponent, ResultComponent, TimerComponent],
   templateUrl: './operation.component.html',
   styleUrl: './operation.component.scss'
 })
@@ -29,9 +31,12 @@ export class OperationComponent implements OnInit {
   checked: boolean = false;
   displayStartButton: boolean = true;
   displayCorrection: boolean = false;
+  disableInput: boolean = true;
   nrOfCorrect: number = 0;
   nrOfIncorrect: number = 0;
   displayStatistics: boolean = false;
+  displayTimer: boolean = false;
+  stopTimer: boolean = false;
   
   constructor(
     private multiplicationService: MultiplicationService, 
@@ -63,6 +68,8 @@ export class OperationComponent implements OnInit {
     this.nrOfExample = 0;
     this.displayStartButton = false;
     this.displayStatistics = false;
+    this.displayTimer = true;
+    this.stopTimer = false;
   }
 
   startPractice() {
@@ -72,6 +79,7 @@ export class OperationComponent implements OnInit {
 
   generateNumbers() {
     this.checked = false;
+    this.disableInput = false;
     this.userResult = '';
     this.displayCorrection = false;
     if (this.nrOfExample < 10) {
@@ -105,7 +113,6 @@ export class OperationComponent implements OnInit {
     }
   }
   
-  
   createResult(num: number) {
     this.userResult += num.toString();
   }
@@ -118,13 +125,18 @@ export class OperationComponent implements OnInit {
     this.success = this.result === Number(this.userResult)
     this.checked = true
     this.userResult = '';
+    if (this.nrOfExample === 10) {
+      this.stopTimer = true;
+    }
     if (this.success === true) {
       this.nrOfCorrect += 1;
+      this.disableInput = true;
       setTimeout(() => {
         this.generateNumbers();
       }, 2000)
     } else {
       this.nrOfIncorrect += 1;
+      this.disableInput = true;
       setTimeout(() => {
         this.displayCorrection = true;
         setTimeout(() => {

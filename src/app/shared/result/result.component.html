@@ -1,0 +1,5 @@
+<div class="result" *ngIf="checked">
+  <p class="correct shimmer" *ngIf="success"> Good job!!!!</p>
+  <p class="incorrect" *ngIf="!success && !displayCorrection">Wrong!</p>
+  <p class="correction primary" *ngIf="checked && displayCorrection">{{number1}} {{operator}} {{number2}} = {{result}}</p>
+</div>

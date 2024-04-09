@@ -1,12 +1,19 @@
 <div class="container">
-  <app-button *ngIf="displayStartButton" label="Start" (onClick)="startPractice()"></app-button>
-  <div class="primary" *ngIf="!displayStartButton">{{nrOfExample}}/10</div>
-  <div class="result" *ngIf="checked">
-    <p class="correct shimmer" *ngIf="success"> Good job!!!!</p>
-    <p class="incorrect" *ngIf="!success && !displayCorrection">Wrong!</p>
-    <p class="correction primary" *ngIf="checked && displayCorrection">{{number1}} {{operator}} {{number2}} = {{result}}</p>
-  </div>
-  
+  <app-button 
+    *ngIf="displayStartButton" 
+    label="Start" 
+    (onClick)="startPractice()"
+  ></app-button>
+  <div class="primary excercise" *ngIf="!displayStartButton">{{nrOfExample}}/10</div>
+  <app-result 
+    [displayCorrection]="displayCorrection"
+    [checked]="checked"
+    [success]="success"
+    [number1]="number1"
+    [number2]="number2"
+    [result]="result"
+    [operator]="operator"
+  ></app-result>
   <div class="operation primary" *ngIf="(number1 || number2) && !checked && !displayStartButton">
     <p>{{number1}} {{operator}} {{number2}} = 
       <span *ngIf="userResult">{{userResult}}</span>
@@ -14,7 +21,7 @@
     </p>
   </div>
   <app-user-input 
-    [disabled]="displayStartButton || displayCorrection" 
+    [disabled]="displayStartButton || displayCorrection || disableInput" 
     (onCreateResult)="createResult($event)"
     (onModifyResult)="modifyResult()"
     (onCheckResult)="checkResult()"
@@ -23,5 +30,9 @@
     <P>Correct: {{nrOfCorrect}}/10</P>
     <p>Incorrect: {{nrOfIncorrect}}/10</p>
   </div>
+  <app-timer 
+    *ngIf="displayTimer"
+    [stopTimer]="stopTimer"
+  ></app-timer>
   <app-button label="Back to main" (onClick)="redirect()" class="back"></app-button>
 </div>
